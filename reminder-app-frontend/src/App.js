@@ -16,13 +16,13 @@ function App() {
   // original code
   
   useEffect(() => {
-    axios.get("https://reminder-app-back.onrender.com").then(res => setReminderList(res.data))
+    axios.get("http://localhost:5000/getAllReminder").then(res => setReminderList(res.data))
   },[]) // if this [] is empty means, It will load defined component when it is load first time bydefault.
 
   const addReminder = async () => {
     try {
       // post request contain mssg and tym
-      await axios.post("https://reminder-app-back.onrender.com", { reminderMsg, remindAt });
+      await axios.post("http://localhost:5000/addReminder", { reminderMsg, remindAt });
   
       const updated = await axios.get("https://reminder-app-back.onrender.com");
       setReminderList(updated.data);
@@ -38,7 +38,7 @@ function App() {
   
   
     const deleteReminder = (id) =>{
-    axios.post("https://reminder-app-back.onrender.com", {id})
+    axios.post("http://localhost:5000/deleteReminder", {id})
     .then(res => 
 
       // updata the list again

@@ -24,7 +24,7 @@ function App() {
       // post request contain mssg and tym
       await axios.post("http://localhost:5000/addReminder", { reminderMsg, remindAt });
   
-      const updated = await axios.get("https://reminder-app-back.onrender.com");
+      const updated = await axios.get("http://localhost:5000/getAllReminder");
       setReminderList(updated.data);
   
 
